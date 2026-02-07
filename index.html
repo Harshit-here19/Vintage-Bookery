@@ -109,11 +109,16 @@
                         <span class="ornament">✦</span>
                     </h3>
                     <div class="drop-zone" id="dropZone">
-                        <input type="file" id="fileInput" accept=".pdf,.txt,.text" hidden>
+                        <input type="file" id="fileInput" accept=".pdf,.txt,.text,.epub" hidden>
                         <div class="drop-content">
                             <span class="drop-icon">📜</span>
                             <p class="drop-title">Drop your file here</p>
-                            <p class="drop-subtitle">PDF or TXT files accepted</p>
+                            <p class="drop-subtitle">PDF, EPUB, or TXT files accepted</p>
+                            <div class="supported-formats">
+                                <span class="format-badge">📄 PDF</span>
+                                <span class="format-badge">📚 EPUB</span>
+                                <span class="format-badge">📝 TXT</span>
+                            </div>
                             <button class="browse-btn" id="browseBtn">Browse Files</button>
                         </div>
                     </div>
@@ -178,34 +183,6 @@ Longer texts will create more pages for an authentic reading experience."></text
                 <div class="book-info">
                     <h2 class="book-title" id="displayTitle">Book Title</h2>
                     <p class="book-author" id="displayAuthor">by Author</p>
-                </div>
-            </div>
-            <div class="header-center">
-                <!-- Audio Controls -->
-                <div class="audio-controls" id="audioControls">
-                    <button class="audio-btn" id="audioPlayBtn" title="Play/Pause">
-                        <span class="play-icon">▶</span>
-                    </button>
-                    <button class="audio-btn" id="audioStopBtn" title="Stop">
-                        <span>■</span>
-                    </button>
-                    <div class="audio-speed">
-                        <label>Speed:</label>
-                        <select id="audioSpeed">
-                            <option value="0.5">0.5x</option>
-                            <option value="0.75">0.75x</option>
-                            <option value="1" selected>1x</option>
-                            <option value="1.25">1.25x</option>
-                            <option value="1.5">1.5x</option>
-                            <option value="2">2x</option>
-                        </select>
-                    </div>
-                    <div class="audio-voice">
-                        <select id="audioVoice" title="Select voice">
-                            <option value="">Default Voice</option>
-                        </select>
-                    </div>
-                    <div class="audio-status" id="audioStatus"></div>
                 </div>
             </div>
             <div class="header-right">
@@ -491,7 +468,8 @@ Longer texts will create more pages for an authentic reading experience."></text
 
     <!-- jsPDF Library for PDF Export -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
+    <!-- JSZip for EPUB parsing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

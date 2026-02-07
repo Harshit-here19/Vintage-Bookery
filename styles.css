@@ -941,83 +941,6 @@ body {
     font-style: italic;
 }
 
-/* Audio Controls */
-.header-center {
-    display: flex;
-    align-items: center;
-}
-
-.audio-controls {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: rgba(0,0,0,0.25);
-    padding: 8px 15px;
-    border-radius: 25px;
-    border: 1px solid var(--accent-secondary);
-}
-
-.audio-btn {
-    width: 36px;
-    height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-    color: var(--paper-primary);
-    background: var(--accent-primary);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.audio-btn:hover {
-    transform: scale(1.1);
-    background: var(--accent-secondary);
-}
-
-.audio-btn.playing {
-    animation: pulse 1s infinite;
-}
-
-.audio-btn.playing .play-icon {
-    display: none;
-}
-
-.audio-btn.playing::before {
-    content: '⏸';
-}
-
-.audio-speed, .audio-voice {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.audio-speed label {
-    font-size: 0.8rem;
-    color: var(--paper-accent);
-}
-
-.audio-speed select, .audio-voice select {
-    padding: 5px 8px;
-    font-family: var(--font-body);
-    font-size: 0.85rem;
-    color: var(--ink-primary);
-    background: var(--paper-primary);
-    border: 1px solid var(--accent-secondary);
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.audio-status {
-    font-size: 0.8rem;
-    color: var(--paper-accent);
-    min-width: 80px;
-    text-align: center;
-}
-
 /* Header Right */
 .header-right {
     display: flex;
@@ -1844,13 +1767,6 @@ body {
    ============================================ */
 
 @media (max-width: 1000px) {
-    .audio-controls {
-        order: 3;
-        width: 100%;
-        justify-content: center;
-        margin-top: 10px;
-    }
-    
     .reader-header {
         flex-wrap: wrap;
     }
@@ -1948,17 +1864,7 @@ body {
         padding: 6px 8px;
         font-size: 0.8rem;
     }
-    
-    .audio-controls {
-        flex-wrap: wrap;
-        gap: 8px;
-        padding: 10px;
     }
-    
-    .audio-voice {
-        display: none;
-    }
-}
 
 /* Print Styles */
 @media print {
@@ -2504,14 +2410,207 @@ body {
 }
 
 /* ============================================
+   SUPPORTED FORMATS BADGES
+   ============================================ */
+
+.supported-formats {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 15px 0;
+    flex-wrap: wrap;
+}
+
+.format-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 14px;
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid var(--leather-primary);
+    border-radius: 20px;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--ink-secondary);
+    transition: all 0.3s;
+}
+
+.format-badge:hover {
+    background: rgba(201, 162, 39, 0.2);
+    border-color: var(--accent-primary);
+    transform: translateY(-2px);
+}
+
+/* EPUB specific loading animation */
+.epub-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.epub-loading-icon {
+    font-size: 3rem;
+    animation: float 2s ease-in-out infinite;
+}
+
+.epub-loading-text {
+    font-family: var(--font-body);
+    color: var(--paper-secondary);
+    font-style: italic;
+}
+
+.epub-loading-progress {
+    width: 200px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.epub-loading-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-secondary), var(--accent-primary));
+    border-radius: 3px;
+    width: 0%;
+    transition: width 0.3s;
+}
+
+/* File type indicator in drop zone */
+.file-type-indicator {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    background: rgba(16, 185, 129, 0.1);
+    border: 2px solid #10b981;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+.file-type-indicator.active {
+    display: flex;
+}
+
+.file-type-indicator .file-icon {
+    font-size: 1.5rem;
+}
+
+.file-type-indicator .file-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.file-type-indicator .file-name {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    color: var(--ink-primary);
+    font-weight: 600;
+}
+
+.file-type-indicator .file-size {
+    font-size: 0.8rem;
+    color: var(--ink-faded);
+}
+
+.file-type-indicator .file-remove {
+    margin-left: auto;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid #ef4444;
+    color: #ef4444;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.file-type-indicator .file-remove:hover {
+    background: #ef4444;
+    color: white;
+}
+
+/* EPUB metadata display */
+.epub-metadata {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    border: 1px solid var(--leather-primary);
+}
+
+.epub-metadata-title {
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    color: var(--ink-faded);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.epub-metadata-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px dotted var(--paper-accent);
+    font-size: 0.9rem;
+}
+
+.epub-metadata-item:last-child {
+    border-bottom: none;
+}
+
+.epub-metadata-label {
+    color: var(--ink-faded);
+}
+
+.epub-metadata-value {
+    color: var(--ink-primary);
+    font-weight: 500;
+}
+
+/* Chapter list for EPUB */
+.epub-chapters {
+    max-height: 200px;
+    overflow-y: auto;
+    margin-top: 15px;
+}
+
+.epub-chapter-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+    color: var(--ink-secondary);
+}
+
+.epub-chapter-item .chapter-num {
+    width: 24px;
+    height: 24px;
+    background: var(--accent-primary);
+    color: var(--paper-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* ============================================
    RESPONSIVE UPDATES
    ============================================ */
 
-@media (max-width: 600px) {
-    .audio-settings {
-        grid-template-columns: 1fr;
-    }
-    
+@media (max-width: 600px) {    
     .export-options {
         grid-template-columns: 1fr;
     }
@@ -2527,9 +2626,5 @@ body {
     .search-navigation {
         flex-direction: column;
         gap: 10px;
-    }
-    
-    .audio-panel {
-        width: 95%;
     }
 }
