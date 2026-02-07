@@ -134,7 +134,7 @@ const state = {
     // ...
     charsPerPage: 1400 // Adjust this value
 };
-
+```
 
 # Feature Support Notes
 
