@@ -6,6 +6,8 @@ Transform your digital texts into beautiful vintage-styled books with an authent
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow)
 
+Check out the project here: [Vintage Bookery](https://harshit-here19.github.io/Vintage-Bookery/)
+
 ## ✨ Features
 
 ### 📤 File Support
