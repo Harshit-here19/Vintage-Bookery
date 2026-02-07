@@ -1,469 +1,545 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>📚 Vintage Bookery - Classic Book Reader</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cinzel:wght@400;500;600;700&family=UnifrakturMaguntia&family=IM+Fell+English:ital@0;1&family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cinzel:wght@400;500;600;700&family=UnifrakturMaguntia&family=IM+Fell+English:ital@0;1&family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Tangerine:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-</head>
-<body data-theme="classic" data-mode="light">
-
+  </head>
+  <body data-theme="classic" data-mode="light">
     <!-- ========== UPLOAD SCREEN ========== -->
     <div class="upload-screen" id="uploadScreen">
-        <div class="upload-wrapper">
-            <header class="upload-header">
-                <div class="logo">
-                    <span class="logo-icon">📚</span>
-                    <h1 class="logo-text">Vintage Bookery</h1>
+      <div class="upload-wrapper">
+        <header class="upload-header">
+          <div class="logo">
+            <span class="logo-icon">📚</span>
+            <h1 class="logo-text">Vintage Bookery</h1>
+          </div>
+          <p class="tagline">
+            Transform your texts into beautiful vintage books
+          </p>
+        </header>
+
+        <div class="upload-card">
+          <div class="card-ornament top-left"></div>
+          <div class="card-ornament top-right"></div>
+          <div class="card-ornament bottom-left"></div>
+          <div class="card-ornament bottom-right"></div>
+
+          <!-- Theme Selection -->
+          <section class="theme-section">
+            <h3 class="section-title">
+              <span class="ornament">❧</span>
+              Choose Your Book Style
+              <span class="ornament">❧</span>
+            </h3>
+
+            <div class="theme-grid" id="themeGrid">
+              <!-- Row 1 -->
+              <div class="theme-option active" data-theme="classic">
+                <div class="theme-preview classic-preview"></div>
+                <span class="theme-name">Classic Vintage</span>
+              </div>
+              <div class="theme-option" data-theme="victorian">
+                <div class="theme-preview victorian-preview"></div>
+                <span class="theme-name">Victorian Gothic</span>
+              </div>
+              <div class="theme-option" data-theme="medieval">
+                <div class="theme-preview medieval-preview"></div>
+                <span class="theme-name">Medieval Script</span>
+              </div>
+              <div class="theme-option" data-theme="antique">
+                <div class="theme-preview antique-preview"></div>
+                <span class="theme-name">Antique Leather</span>
+              </div>
+              <!-- Row 2 -->
+              <div class="theme-option" data-theme="library">
+                <div class="theme-preview library-preview"></div>
+                <span class="theme-name">Old Library</span>
+              </div>
+              <div class="theme-option" data-theme="academia">
+                <div class="theme-preview academia-preview"></div>
+                <span class="theme-name">Dark Academia</span>
+              </div>
+              <div class="theme-option" data-theme="steampunk">
+                <div class="theme-preview steampunk-preview"></div>
+                <span class="theme-name">Steampunk</span>
+              </div>
+              <div class="theme-option" data-theme="artdeco">
+                <div class="theme-preview artdeco-preview"></div>
+                <span class="theme-name">Art Deco</span>
+              </div>
+              <!-- Row 3 -->
+              <div class="theme-option" data-theme="renaissance">
+                <div class="theme-preview renaissance-preview"></div>
+                <span class="theme-name">Renaissance</span>
+              </div>
+              <div class="theme-option" data-theme="colonial">
+                <div class="theme-preview colonial-preview"></div>
+                <span class="theme-name">Colonial</span>
+              </div>
+              <div class="theme-option" data-theme="oriental">
+                <div class="theme-preview oriental-preview"></div>
+                <span class="theme-name">Oriental</span>
+              </div>
+              <div class="theme-option" data-theme="nautical">
+                <div class="theme-preview nautical-preview"></div>
+                <span class="theme-name">Nautical</span>
+              </div>
+            </div>
+
+            <div class="mode-toggle">
+              <span class="mode-label">☀️ Light</span>
+              <label class="toggle-switch">
+                <input type="checkbox" id="modeToggle" />
+                <span class="toggle-slider"></span>
+              </label>
+              <span class="mode-label">🌙 Dark</span>
+            </div>
+          </section>
+
+          <!-- File Upload -->
+          <section class="upload-section">
+            <h3 class="section-title">
+              <span class="ornament">✦</span>
+              Upload Your Document
+              <span class="ornament">✦</span>
+            </h3>
+            <div class="drop-zone" id="dropZone">
+              <input
+                type="file"
+                id="fileInput"
+                accept=".pdf,.txt,.text,.epub"
+                hidden
+              />
+              <div class="drop-content">
+                <span class="drop-icon">📜</span>
+                <p class="drop-title">Drop your file here</p>
+                <p class="drop-subtitle">PDF, EPUB, or TXT files accepted</p>
+                <div class="supported-formats">
+                  <span class="format-badge">📄 PDF</span>
+                  <span class="format-badge">📚 EPUB</span>
+                  <span class="format-badge">📝 TXT</span>
                 </div>
-                <p class="tagline">Transform your texts into beautiful vintage books</p>
-            </header>
+                <button class="browse-btn" id="browseBtn">Browse Files</button>
+              </div>
+            </div>
+          </section>
 
-            <div class="upload-card">
-                <div class="card-ornament top-left"></div>
-                <div class="card-ornament top-right"></div>
-                <div class="card-ornament bottom-left"></div>
-                <div class="card-ornament bottom-right"></div>
+          <!-- Divider -->
+          <div class="divider">
+            <span>or paste your text</span>
+          </div>
 
-                <!-- Theme Selection -->
-                <section class="theme-section">
-                    <h3 class="section-title">
-                        <span class="ornament">❧</span>
-                        Choose Your Book Style
-                        <span class="ornament">❧</span>
-                    </h3>
-                    
-                    <div class="theme-grid" id="themeGrid">
-                        <!-- Row 1 -->
-                        <div class="theme-option active" data-theme="classic">
-                            <div class="theme-preview classic-preview"></div>
-                            <span class="theme-name">Classic Vintage</span>
-                        </div>
-                        <div class="theme-option" data-theme="victorian">
-                            <div class="theme-preview victorian-preview"></div>
-                            <span class="theme-name">Victorian Gothic</span>
-                        </div>
-                        <div class="theme-option" data-theme="medieval">
-                            <div class="theme-preview medieval-preview"></div>
-                            <span class="theme-name">Medieval Script</span>
-                        </div>
-                        <div class="theme-option" data-theme="antique">
-                            <div class="theme-preview antique-preview"></div>
-                            <span class="theme-name">Antique Leather</span>
-                        </div>
-                        <!-- Row 2 -->
-                        <div class="theme-option" data-theme="library">
-                            <div class="theme-preview library-preview"></div>
-                            <span class="theme-name">Old Library</span>
-                        </div>
-                        <div class="theme-option" data-theme="academia">
-                            <div class="theme-preview academia-preview"></div>
-                            <span class="theme-name">Dark Academia</span>
-                        </div>
-                        <div class="theme-option" data-theme="steampunk">
-                            <div class="theme-preview steampunk-preview"></div>
-                            <span class="theme-name">Steampunk</span>
-                        </div>
-                        <div class="theme-option" data-theme="artdeco">
-                            <div class="theme-preview artdeco-preview"></div>
-                            <span class="theme-name">Art Deco</span>
-                        </div>
-                        <!-- Row 3 -->
-                        <div class="theme-option" data-theme="renaissance">
-                            <div class="theme-preview renaissance-preview"></div>
-                            <span class="theme-name">Renaissance</span>
-                        </div>
-                        <div class="theme-option" data-theme="colonial">
-                            <div class="theme-preview colonial-preview"></div>
-                            <span class="theme-name">Colonial</span>
-                        </div>
-                        <div class="theme-option" data-theme="oriental">
-                            <div class="theme-preview oriental-preview"></div>
-                            <span class="theme-name">Oriental</span>
-                        </div>
-                        <div class="theme-option" data-theme="nautical">
-                            <div class="theme-preview nautical-preview"></div>
-                            <span class="theme-name">Nautical</span>
-                        </div>
-                    </div>
-
-                    <div class="mode-toggle">
-                        <span class="mode-label">☀️ Light</span>
-                        <label class="toggle-switch">
-                            <input type="checkbox" id="modeToggle">
-                            <span class="toggle-slider"></span>
-                        </label>
-                        <span class="mode-label">🌙 Dark</span>
-                    </div>
-                </section>
-
-                <!-- File Upload -->
-                <section class="upload-section">
-                    <h3 class="section-title">
-                        <span class="ornament">✦</span>
-                        Upload Your Document
-                        <span class="ornament">✦</span>
-                    </h3>
-                    <div class="drop-zone" id="dropZone">
-                        <input type="file" id="fileInput" accept=".pdf,.txt,.text,.epub" hidden>
-                        <div class="drop-content">
-                            <span class="drop-icon">📜</span>
-                            <p class="drop-title">Drop your file here</p>
-                            <p class="drop-subtitle">PDF, EPUB, or TXT files accepted</p>
-                            <div class="supported-formats">
-                                <span class="format-badge">📄 PDF</span>
-                                <span class="format-badge">📚 EPUB</span>
-                                <span class="format-badge">📝 TXT</span>
-                            </div>
-                            <button class="browse-btn" id="browseBtn">Browse Files</button>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Divider -->
-                <div class="divider">
-                    <span>or paste your text</span>
-                </div>
-
-                <!-- Text Input -->
-                <section class="text-section">
-                    <textarea class="text-input" id="textInput" placeholder="Paste your story, article, or any text here...
+          <!-- Text Input -->
+          <section class="text-section">
+            <textarea
+              class="text-input"
+              id="textInput"
+              placeholder="Paste your story, article, or any text here...
 
 The text will be transformed into a beautiful vintage book that you can read page by page with audio narration.
 
-Longer texts will create more pages for an authentic reading experience."></textarea>
-                </section>
+Longer texts will create more pages for an authentic reading experience."
+            ></textarea>
+          </section>
 
-                <!-- Book Options -->
-                <section class="options-section">
-                    <div class="option-row">
-                        <div class="option-field">
-                            <label for="bookTitle">Book Title</label>
-                            <input type="text" id="bookTitle" placeholder="Enter book title...">
-                        </div>
-                        <div class="option-field">
-                            <label for="authorName">Author</label>
-                            <input type="text" id="authorName" placeholder="Enter author name...">
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Create Button -->
-                <button class="create-btn" id="createBtn">
-                    <span class="btn-icon">📖</span>
-                    <span class="btn-text">Create Vintage Book</span>
-                </button>
-
-                <!-- Demo Button -->
-                <button class="demo-btn" id="demoBtn">
-                    ✨ Try with sample text
-                </button>
-
-                <p class="error-msg" id="errorMsg"></p>
+          <!-- Book Options -->
+          <section class="options-section">
+            <div class="option-row">
+              <div class="option-field">
+                <label for="bookTitle">Book Title</label>
+                <input
+                  type="text"
+                  id="bookTitle"
+                  placeholder="Enter book title..."
+                />
+              </div>
+              <div class="option-field">
+                <label for="authorName">Author</label>
+                <input
+                  type="text"
+                  id="authorName"
+                  placeholder="Enter author name..."
+                />
+              </div>
             </div>
+          </section>
 
-            <footer class="upload-footer">
-                <p>✦ Crafted for lovers of classic literature ✦</p>
-            </footer>
+          <!-- Create Button -->
+          <button class="create-btn" id="createBtn">
+            <span class="btn-icon">📖</span>
+            <span class="btn-text">Create Vintage Book</span>
+          </button>
+
+          <!-- Demo Button -->
+          <button class="demo-btn" id="demoBtn">✨ Try with sample text</button>
+
+          <p class="error-msg" id="errorMsg"></p>
         </div>
+
+        <footer class="upload-footer">
+          <p>✦ Crafted for lovers of classic literature ✦</p>
+        </footer>
+      </div>
     </div>
 
     <!-- ========== READER SCREEN ========== -->
     <div class="reader-screen" id="readerScreen">
-        <!-- Reader Header -->
-        <header class="reader-header">
-            <div class="header-left">
-                <button class="header-btn" id="backBtn" title="Back to upload">
-                    <span>←</span>
-                </button>
-                <div class="book-info">
-                    <h2 class="book-title" id="displayTitle">Book Title</h2>
-                    <p class="book-author" id="displayAuthor">by Author</p>
-                </div>
+      <!-- Reader Header -->
+      <header class="reader-header">
+        <div class="header-left">
+          <button class="header-btn" id="backBtn" title="Back to upload">
+            <span>←</span>
+          </button>
+          <div class="book-info">
+            <h2 class="book-title" id="displayTitle">Book Title</h2>
+            <p class="book-author" id="displayAuthor">by Author</p>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="reader-controls">
+            <!-- Search -->
+            <button class="ctrl-btn" id="searchBtn" title="Search">🔍</button>
+
+            <!-- Font Size -->
+            <div class="control-group font-controls">
+              <button class="ctrl-btn" id="fontDown" title="Decrease font">
+                A−
+              </button>
+              <span class="font-size-display" id="fontSizeDisplay">100%</span>
+              <button class="ctrl-btn" id="fontUp" title="Increase font">
+                A+
+              </button>
+              <!-- Search Button -->
+              <button class="ctrl-btn" id="searchOpenBtn" title="Search">
+                🔍
+              </button>
+
+              <!-- Export Button -->
+              <button class="ctrl-btn" id="exportOpenBtn" title="Export book">
+                📥
+              </button>
             </div>
-            <div class="header-right">
-                <div class="reader-controls">
-                    <!-- Search -->
-                    <button class="ctrl-btn" id="searchBtn" title="Search">🔍</button>
 
-                    <!-- Font Size -->
-                    <div class="control-group font-controls">
-                        <button class="ctrl-btn" id="fontDown" title="Decrease font">A−</button>
-                        <span class="font-size-display" id="fontSizeDisplay">100%</span>
-                        <button class="ctrl-btn" id="fontUp" title="Increase font">A+</button>
-                    <!-- Search Button -->
-                    <button class="ctrl-btn" id="searchOpenBtn" title="Search">🔍</button>
-
-                    <!-- Export Button -->
-                    <button class="ctrl-btn" id="exportOpenBtn" title="Export book">📥</button>
-                    </div>
-
-                    <!-- Theme Switcher -->
-                    <div class="control-group">
-                        <button class="ctrl-btn" id="themeBtn" title="Change theme">🎨</button>
-                        <div class="theme-dropdown" id="themeDropdown">
-                            <div class="dropdown-item" data-theme="classic">📜 Classic Vintage</div>
-                            <div class="dropdown-item" data-theme="victorian">🏚️ Victorian Gothic</div>
-                            <div class="dropdown-item" data-theme="medieval">⚔️ Medieval Script</div>
-                            <div class="dropdown-item" data-theme="antique">📕 Antique Leather</div>
-                            <div class="dropdown-item" data-theme="library">📚 Old Library</div>
-                            <div class="dropdown-item" data-theme="academia">🎓 Dark Academia</div>
-                            <div class="dropdown-item" data-theme="steampunk">⚙️ Steampunk</div>
-                            <div class="dropdown-item" data-theme="artdeco">💎 Art Deco</div>
-                            <div class="dropdown-item" data-theme="renaissance">🎨 Renaissance</div>
-                            <div class="dropdown-item" data-theme="colonial">🦅 Colonial</div>
-                            <div class="dropdown-item" data-theme="oriental">🏯 Oriental</div>
-                            <div class="dropdown-item" data-theme="nautical">⚓ Nautical</div>
-                        </div>
-                    </div>
-
-                    <!-- Dark Mode -->
-                    <button class="ctrl-btn" id="darkModeBtn" title="Toggle dark mode">🌙</button>
-
-                    <!-- Table of Contents -->
-                    <button class="ctrl-btn" id="tocBtn" title="Table of contents">📑</button>
-
-                    <!-- Fullscreen -->
-                    <button class="ctrl-btn" id="fullscreenBtn" title="Fullscreen">⛶</button>
+            <!-- Theme Switcher -->
+            <div class="control-group">
+              <button class="ctrl-btn" id="themeBtn" title="Change theme">
+                🎨
+              </button>
+              <div class="theme-dropdown" id="themeDropdown">
+                <div class="dropdown-item" data-theme="classic">
+                  📜 Classic Vintage
                 </div>
-            </div>
-        </header>
-
-        <!-- Book Container -->
-        <main class="book-wrapper">
-            <div class="book-scene">
-                <div class="book">
-                    <!-- Book Spine -->
-                    <div class="book-spine">
-                        <div class="spine-decoration"></div>
-                        <span class="spine-title" id="spineTitle">Book Title</span>
-                        <div class="spine-decoration"></div>
-                    </div>
-
-                    <!-- Page Edges -->
-                    <div class="page-edges"></div>
-
-                    <!-- Open Book -->
-                    <div class="book-open" id="bookOpen">
-                        <!-- Bookmark -->
-                        <div class="bookmark" id="bookmark" title="Toggle bookmark">
-                            <div class="bookmark-ribbon"></div>
-                        </div>
-
-                        <!-- Left Page -->
-                        <article class="page page-left" id="pageLeft">
-                            <div class="page-texture"></div>
-                            <header class="page-header">
-                                <span class="header-ornament">❦</span>
-                                <span class="header-text" id="leftHeaderText">Vintage Bookery</span>
-                                <span class="header-ornament">❦</span>
-                            </header>
-                            <div class="page-body">
-                                <div class="page-content" id="leftContent"></div>
-                            </div>
-                            <footer class="page-footer">
-                                <span class="page-number" id="leftPageNum">1</span>
-                            </footer>
-                            <div class="page-shadow"></div>
-                        </article>
-
-                        <!-- Book Binding -->
-                        <div class="book-binding"></div>
-
-                        <!-- Right Page -->
-                        <article class="page page-right" id="pageRight">
-                            <div class="page-texture"></div>
-                            <header class="page-header">
-                                <span class="header-ornament">❦</span>
-                                <span class="header-text" id="rightHeaderText">Chapter I</span>
-                                <span class="header-ornament">❦</span>
-                            </header>
-                            <div class="page-body">
-                                <div class="page-content" id="rightContent"></div>
-                            </div>
-                            <footer class="page-footer">
-                                <span class="page-number" id="rightPageNum">2</span>
-                            </footer>
-                            <div class="page-shadow"></div>
-                        </article>
-                    </div>
+                <div class="dropdown-item" data-theme="victorian">
+                  🏚️ Victorian Gothic
                 </div>
+                <div class="dropdown-item" data-theme="medieval">
+                  ⚔️ Medieval Script
+                </div>
+                <div class="dropdown-item" data-theme="antique">
+                  📕 Antique Leather
+                </div>
+                <div class="dropdown-item" data-theme="library">
+                  📚 Old Library
+                </div>
+                <div class="dropdown-item" data-theme="academia">
+                  🎓 Dark Academia
+                </div>
+                <div class="dropdown-item" data-theme="steampunk">
+                  ⚙️ Steampunk
+                </div>
+                <div class="dropdown-item" data-theme="artdeco">
+                  💎 Art Deco
+                </div>
+                <div class="dropdown-item" data-theme="renaissance">
+                  🎨 Renaissance
+                </div>
+                <div class="dropdown-item" data-theme="colonial">
+                  🦅 Colonial
+                </div>
+                <div class="dropdown-item" data-theme="oriental">
+                  🏯 Oriental
+                </div>
+                <div class="dropdown-item" data-theme="nautical">
+                  ⚓ Nautical
+                </div>
+              </div>
             </div>
-        </main>
 
-        <!-- Navigation -->
-        <nav class="book-nav">
-            <button class="nav-btn nav-prev" id="prevBtn" disabled>
-                <span class="nav-arrow">◄</span>
-                <span class="nav-text">Previous</span>
+            <!-- Dark Mode -->
+            <button class="ctrl-btn" id="darkModeBtn" title="Toggle dark mode">
+              🌙
             </button>
 
-            <div class="nav-center">
-                <div class="page-info" id="pageInfo">Pages 1-2 of 10</div>
-                <div class="progress-container">
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progressFill"></div>
-                    </div>
-                    <span class="progress-text" id="progressText">0%</span>
-                </div>
+            <!-- Table of Contents -->
+            <button class="ctrl-btn" id="tocBtn" title="Table of contents">
+              📑
+            </button>
+
+            <!-- Fullscreen -->
+            <button class="ctrl-btn" id="fullscreenBtn" title="Fullscreen">
+              ⛶
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Book Container -->
+      <main class="book-wrapper">
+        <div class="book-scene">
+          <div class="book">
+            <!-- Book Spine -->
+            <div class="book-spine">
+              <div class="spine-decoration"></div>
+              <span class="spine-title" id="spineTitle">Book Title</span>
+              <div class="spine-decoration"></div>
             </div>
 
-            <button class="nav-btn nav-next" id="nextBtn">
-                <span class="nav-text">Next</span>
-                <span class="nav-arrow">►</span>
-            </button>
-        </nav>
+            <!-- Page Edges -->
+            <div class="page-edges"></div>
+
+            <!-- Open Book -->
+            <div class="book-open" id="bookOpen">
+              <!-- Bookmark -->
+              <div class="bookmark" id="bookmark" title="Toggle bookmark">
+                <div class="bookmark-ribbon"></div>
+              </div>
+
+              <!-- Left Page -->
+              <article class="page page-left" id="pageLeft">
+                <div class="page-texture"></div>
+                <header class="page-header">
+                  <span class="header-ornament">❦</span>
+                  <span class="header-text" id="leftHeaderText"
+                    >Vintage Bookery</span
+                  >
+                  <span class="header-ornament">❦</span>
+                </header>
+                <div class="page-body">
+                  <div class="page-content" id="leftContent"></div>
+                </div>
+                <footer class="page-footer">
+                  <span class="page-number" id="leftPageNum">1</span>
+                </footer>
+                <div class="page-shadow"></div>
+              </article>
+
+              <!-- Book Binding -->
+              <div class="book-binding"></div>
+
+              <!-- Right Page -->
+              <article class="page page-right" id="pageRight">
+                <div class="page-texture"></div>
+                <header class="page-header">
+                  <span class="header-ornament">❦</span>
+                  <span class="header-text" id="rightHeaderText"
+                    >Chapter I</span
+                  >
+                  <span class="header-ornament">❦</span>
+                </header>
+                <div class="page-body">
+                  <div class="page-content" id="rightContent"></div>
+                </div>
+                <footer class="page-footer">
+                  <span class="page-number" id="rightPageNum">2</span>
+                </footer>
+                <div class="page-shadow"></div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Navigation -->
+      <nav class="book-nav">
+        <button class="nav-btn nav-prev" id="prevBtn" disabled>
+          <span class="nav-arrow">◄</span>
+          <span class="nav-text">Previous</span>
+        </button>
+
+        <div class="nav-center">
+          <div class="page-info" id="pageInfo">Pages 1-2 of 10</div>
+          <div class="progress-container">
+            <div class="progress-bar">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <span class="progress-text" id="progressText">0%</span>
+          </div>
+        </div>
+
+        <button class="nav-btn nav-next" id="nextBtn">
+          <span class="nav-text">Next</span>
+          <span class="nav-arrow">►</span>
+        </button>
+      </nav>
     </div>
 
     <!-- ========== SEARCH MODAL ========== -->
     <div class="modal-overlay" id="searchModal">
-        <div class="modal search-modal">
-            <button class="modal-close" id="searchClose">✕</button>
-            <h2 class="modal-title">
-                <span>🔍</span>
-                Search in Book
-            </h2>
-            <div class="search-container">
-                <div class="search-input-group">
-                    <input type="text" id="searchInput" placeholder="Enter search term..." autocomplete="off">
-                    <button class="search-submit" id="searchSubmit">Search</button>
-                </div>
-                <div class="search-options">
-                    <label class="search-option">
-                        <input type="checkbox" id="searchCaseSensitive">
-                        <span>Case sensitive</span>
-                    </label>
-                    <label class="search-option">
-                        <input type="checkbox" id="searchWholeWord">
-                        <span>Whole word</span>
-                    </label>
-                </div>
-                <div class="search-results-info" id="searchResultsInfo"></div>
-                <div class="search-nav" id="searchNav" style="display: none;">
-                    <button class="search-nav-btn" id="searchPrev">◄ Previous</button>
-                    <span class="search-position" id="searchPosition">0 of 0</span>
-                    <button class="search-nav-btn" id="searchNext">Next ►</button>
-                </div>
-                <div class="search-results" id="searchResults"></div>
-            </div>
+      <div class="modal search-modal">
+        <button class="modal-close" id="searchClose">✕</button>
+        <h2 class="modal-title">
+          <span>🔍</span>
+          Search in Book
+        </h2>
+        <div class="search-container">
+          <div class="search-input-group">
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Enter search term..."
+              autocomplete="off"
+            />
+            <button class="search-submit" id="searchSubmit">Search</button>
+          </div>
+          <div class="search-options">
+            <label class="search-option">
+              <input type="checkbox" id="searchCaseSensitive" />
+              <span>Case sensitive</span>
+            </label>
+            <label class="search-option">
+              <input type="checkbox" id="searchWholeWord" />
+              <span>Whole word</span>
+            </label>
+          </div>
+          <div class="search-results-info" id="searchResultsInfo"></div>
+          <div class="search-nav" id="searchNav" style="display: none">
+            <button class="search-nav-btn" id="searchPrev">◄ Previous</button>
+            <span class="search-position" id="searchPosition">0 of 0</span>
+            <button class="search-nav-btn" id="searchNext">Next ►</button>
+          </div>
+          <div class="search-results" id="searchResults"></div>
         </div>
+      </div>
     </div>
 
     <!-- ========== TABLE OF CONTENTS MODAL ========== -->
     <div class="modal-overlay" id="tocModal">
-        <div class="modal toc-modal">
-            <button class="modal-close" id="tocClose">✕</button>
-            <h2 class="modal-title">
-                <span>📜</span>
-                Table of Contents
-            </h2>
-            <div class="toc-list" id="tocList"></div>
-        </div>
+      <div class="modal toc-modal">
+        <button class="modal-close" id="tocClose">✕</button>
+        <h2 class="modal-title">
+          <span>📜</span>
+          Table of Contents
+        </h2>
+        <div class="toc-list" id="tocList"></div>
+      </div>
     </div>
 
     <!-- ========== LOADING OVERLAY ========== -->
     <div class="loading-overlay" id="loadingOverlay">
-        <div class="loading-content">
-            <div class="loading-book">
-                <div class="loading-page"></div>
-                <div class="loading-page"></div>
-                <div class="loading-page"></div>
-            </div>
-            <p class="loading-text" id="loadingText">Preparing your book...</p>
+      <div class="loading-content">
+        <div class="loading-book">
+          <div class="loading-page"></div>
+          <div class="loading-page"></div>
+          <div class="loading-page"></div>
         </div>
+        <p class="loading-text" id="loadingText">Preparing your book...</p>
+      </div>
     </div>
 
     <!-- ========== SEARCH MODAL ========== -->
     <div class="modal-overlay" id="searchModal">
-        <div class="modal search-modal">
-            <button class="modal-close" id="searchClose">✕</button>
-            <h2 class="modal-title">
-                <span>🔍</span>
-                Search in Book
-            </h2>
-            <div class="search-container">
-                <div class="search-input-wrapper">
-                    <input type="text" id="searchInput" class="search-input" placeholder="Enter search term..." autocomplete="off">
-                    <button class="search-btn" id="searchBtn">Search</button>
-                </div>
-                <div class="search-stats" id="searchStats"></div>
-                <div class="search-navigation" id="searchNavigation">
-                    <button class="search-nav-btn" id="searchPrev">◄ Previous</button>
-                    <span class="search-position" id="searchPosition">0 of 0</span>
-                    <button class="search-nav-btn" id="searchNext">Next ►</button>
-                </div>
-                <div class="search-results" id="searchResults"></div>
-            </div>
+      <div class="modal search-modal">
+        <button class="modal-close" id="searchClose">✕</button>
+        <h2 class="modal-title">
+          <span>🔍</span>
+          Search in Book
+        </h2>
+        <div class="search-container">
+          <div class="search-input-wrapper">
+            <input
+              type="text"
+              id="searchInput"
+              class="search-input"
+              placeholder="Enter search term..."
+              autocomplete="off"
+            />
+            <button class="search-btn" id="searchBtn">Search</button>
+          </div>
+          <div class="search-stats" id="searchStats"></div>
+          <div class="search-navigation" id="searchNavigation">
+            <button class="search-nav-btn" id="searchPrev">◄ Previous</button>
+            <span class="search-position" id="searchPosition">0 of 0</span>
+            <button class="search-nav-btn" id="searchNext">Next ►</button>
+          </div>
+          <div class="search-results" id="searchResults"></div>
         </div>
+      </div>
     </div>
 
     <!-- ========== EXPORT MODAL ========== -->
     <div class="modal-overlay" id="exportModal">
-        <div class="modal export-modal">
-            <button class="modal-close" id="exportClose">✕</button>
-            <h2 class="modal-title">
-                <span>📥</span>
-                Export Book
-            </h2>
-            <div class="export-options">
-                <div class="export-option" data-format="pdf">
-                    <span class="export-icon">📄</span>
-                    <span class="export-name">PDF Document</span>
-                    <span class="export-desc">High-quality printable format</span>
-                </div>
-                <div class="export-option" data-format="txt">
-                    <span class="export-icon">📝</span>
-                    <span class="export-name">Plain Text</span>
-                    <span class="export-desc">Simple text file</span>
-                </div>
-                <div class="export-option" data-format="html">
-                    <span class="export-icon">🌐</span>
-                    <span class="export-name">HTML File</span>
-                    <span class="export-desc">Styled web page</span>
-                </div>
-                <div class="export-option" data-format="epub">
-                    <span class="export-icon">📚</span>
-                    <span class="export-name">EPUB</span>
-                    <span class="export-desc">E-reader format</span>
-                </div>
-            </div>
-            <div class="export-settings">
-                <h4>PDF Settings</h4>
-                <div class="export-setting-row">
-                    <label>
-                        <input type="checkbox" id="exportIncludeCover" checked>
-                        Include cover page
-                    </label>
-                </div>
-                <div class="export-setting-row">
-                    <label>
-                        <input type="checkbox" id="exportVintageStyle" checked>
-                        Apply vintage styling
-                    </label>
-                </div>
-                <div class="export-setting-row">
-                    <label>Page Size</label>
-                    <select id="exportPageSize">
-                        <option value="a4">A4</option>
-                        <option value="letter">Letter</option>
-                        <option value="a5">A5 (Book size)</option>
-                    </select>
-                </div>
-            </div>
-            <button class="export-btn" id="exportBtn">
-                <span>📥</span> Export Now
-            </button>
-            <div class="export-progress" id="exportProgress">
-                <div class="export-progress-bar">
-                    <div class="export-progress-fill" id="exportProgressFill"></div>
-                </div>
-                <p class="export-progress-text" id="exportProgressText">Preparing export...</p>
-            </div>
+      <div class="modal export-modal">
+        <button class="modal-close" id="exportClose">✕</button>
+        <h2 class="modal-title">
+          <span>📥</span>
+          Export Book
+        </h2>
+        <div class="export-options">
+          <div class="export-option" data-format="pdf">
+            <span class="export-icon">📄</span>
+            <span class="export-name">PDF Document</span>
+            <span class="export-desc">High-quality printable format</span>
+          </div>
+          <div class="export-option" data-format="txt">
+            <span class="export-icon">📝</span>
+            <span class="export-name">Plain Text</span>
+            <span class="export-desc">Simple text file</span>
+          </div>
+          <div class="export-option" data-format="html">
+            <span class="export-icon">🌐</span>
+            <span class="export-name">HTML File</span>
+            <span class="export-desc">Styled web page</span>
+          </div>
+          <div class="export-option" data-format="epub">
+            <span class="export-icon">📚</span>
+            <span class="export-name">EPUB</span>
+            <span class="export-desc">E-reader format</span>
+          </div>
         </div>
+        <div class="export-settings">
+          <h4>PDF Settings</h4>
+          <div class="export-setting-row">
+            <label>
+              <input type="checkbox" id="exportIncludeCover" checked />
+              Include cover page
+            </label>
+          </div>
+          <div class="export-setting-row">
+            <label>
+              <input type="checkbox" id="exportVintageStyle" checked />
+              Apply vintage styling
+            </label>
+          </div>
+          <div class="export-setting-row">
+            <label>Page Size</label>
+            <select id="exportPageSize">
+              <option value="a4">A4</option>
+              <option value="letter">Letter</option>
+              <option value="a5">A5 (Book size)</option>
+            </select>
+          </div>
+        </div>
+        <button class="export-btn" id="exportBtn">
+          <span>📥</span> Export Now
+        </button>
+        <div class="export-progress" id="exportProgress">
+          <div class="export-progress-bar">
+            <div class="export-progress-fill" id="exportProgressFill"></div>
+          </div>
+          <p class="export-progress-text" id="exportProgressText">
+            Preparing export...
+          </p>
+        </div>
+      </div>
     </div>
 
     <!-- jsPDF Library for PDF Export -->
@@ -471,5 +547,5 @@ Longer texts will create more pages for an authentic reading experience."></text
     <!-- JSZip for EPUB parsing -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
