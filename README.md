@@ -72,5 +72,116 @@ Transform your digital texts into beautiful vintage-styled books with an authent
 - Modern web browser (Chrome, Firefox, Safari, Edge)
 - Internet connection (for PDF.js and JSZip CDN)
 
+# 🎮 Usage Guide
+
+## 📤 Uploading Content
+
+### Drag & Drop
+- Drag a **PDF, EPUB, or TXT** file onto the upload zone
+
+### Click to Browse
+- Click the upload zone or the **“Browse Files”** button
+- Select a file from the file dialog
+
+### Paste Text
+- Paste text directly into the text area
+- Add a custom **book title** and **author name**
+
+### Demo Mode
+- Click **“Try with sample text”** to load demo content
+
+---
+
+## 📖 Reading Controls
+
+| Action | Control |
+|------|--------|
+| Next Page | → / ↓ / Space / Click **Next** |
+| Previous Page | ← / ↑ / Click **Previous** |
+| Toggle Bookmark | Click bookmark ribbon |
+| Change Theme | Click 🎨 button |
+| Toggle Dark Mode | Click 🌙 / ☀️ button |
+| Search | Click 🔍 or **Ctrl + F** |
+| Audio Reader | Click 🔊 button |
+| Export | Click 📥 button |
+| Table of Contents | Click 📑 button |
+| Fullscreen | Click ⛶ button |
+| Increase Font | Click **A+** |
+| Decrease Font | Click **A-** |
+
+---
+
+## ⌨️ Keyboard Shortcuts
+
+| Key | Action |
+|---|---|
+| ← / ↑ | Previous page |
+| → / ↓ / Space | Next page |
+| Ctrl + F | Open search |
+| Escape | Close modals |
+| F11 | Fullscreen (browser) |
+
+
+## 📐 Adjusting Page Size
+
+You can control how much text appears on each page by modifying the `charsPerPage` value in `script.js`.
+
+### Location
+```js
+const state = {
+    // ...
+    charsPerPage: 1400 // Adjust this value
+};
+
+
+# Feature Support Notes
+
+## 📄 PDF Reading
+- Requires an internet connection for **PDF.js CDN**
+
+## 📚 EPUB Reading
+- Requires an internet connection for **JSZip CDN**
+
+## 🔊 Text-to-Speech
+- Uses the **Web Speech API**
+- Browser-dependent support
+
+## 🖥️ Fullscreen
+- Uses the **Fullscreen API**
+
+## 💾 Preferences Storage
+- Requires **localStorage** for saving user preferences
+
+---
+
+# 🐛 Troubleshooting
+
+## PDF Not Loading
+- Ensure you have an active internet connection
+- Check if the **PDF.js CDN** is accessible
+- Try loading a different PDF file
+- Open the browser console and check for errors
+
+## EPUB Not Loading
+- Ensure you have an active internet connection
+- Check if the **JSZip CDN** is accessible
+- Verify the EPUB file is **not DRM-protected**
+- Try converting the EPUB to **TXT** first
+
+## Text-to-Speech Not Working
+- Confirm the browser supports the **Web Speech API**
+- Try a different browser (**Chrome recommended**)
+- Ensure your system has voice packages installed
+
+## Styles Not Applying
+- Clear the browser cache
+- Check for CSS syntax errors
+- Verify all file paths are correct
+
+## Performance Issues
+- Reduce page size for large documents
+- Close the audio panel when not in use
+- Disable animations if necessary
+
 
 <p align="center"> Made with ❤️ for book lovers everywhere <br> <strong>📚 Happy Reading! 📚</strong> </p>
